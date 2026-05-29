@@ -1,0 +1,30 @@
+[
+  {
+    "figure": "fig_4_5_compression_accuracy",
+    "source_summary_file": "summary_threshold_sensitivity.csv"
+  },
+  {
+    "figure": "fig_5_1_uq_calibration",
+    "source_summary_file": "summary_uq_ablation.csv"
+  },
+  {
+    "figure": "fig_5_2_strong_baseline",
+    "source_summary_file": "summary_baselines.csv"
+  },
+  {
+    "figure": "fig_5_3_structure_baseline",
+    "source_summary_file": "summary_baselines.csv"
+  },
+  {
+    "figure": "appendix_guard_threshold_sensitivity",
+    "source_summary_file": "summary_threshold_sensitivity.csv"
+  },
+  {
+    "figure": "appendix_structure_stability_heatmap",
+    "source_summary_file": "summary_structure_stability.csv"
+  },
+  {
+    "figure": "appendix_reconstruction_ablation",
+    "source_summary_file": "summary_reconstruction_ablation.csv"
+  }
+]
