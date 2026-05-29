@@ -1,0 +1,6 @@
+old_source_path,experiment_name,reason_not_official,related_paper_section,whether_used_in_paper,allowed_usage
+3.34/Bayesian-Psi-NN-v3_34-poisson-uq-calibration-power,poisson_uq_calibration_seed0,legacy single-version protocol and not unified five-seed blind protocol,UQ calibration,no,diagnostic provenance only
+3.35/Bayesian-Psi-NN-v3_35-supplementary-evidence,representative_reconstruction_ablation,representative run or incomplete seed coverage,Appendix D,no,diagnostic provenance only
+3.37/Bayesian-Psi-NN-v3_37-blind-split-baselines,seed_variance_of_dense_student,shares teacher distillation and is not an independent deep ensemble baseline,Supplementary baseline,no,diagnostic only; do not label as deep ensemble
+3.38/Bayesian-Psi-NN-v3_38-full-baselines,strong_baseline_prototype,baseline protocol must be re-run with unified five-seed blind splits,Table 5.4,no,code source only until rerun
+

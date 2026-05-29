@@ -1,0 +1,10 @@
+source_id,relative_path,source_role,official_status,migration_action,notes
+integrated_runtime_engine,runtime_engine,Self-contained executable runtime for main and strong baselines,official_runtime,vendored_from_reviewed_source,Runtime source copied without historical Results or results outputs.
+v3_34_poisson_uq,../3.34/Bayesian-Psi-NN-v3_34-poisson-uq-calibration-power,Poisson UQ calibration and final v3.34 reference,legacy_diagnostic,index_only,Use only for provenance unless re-run under unified five-seed blind protocol.
+v3_35_supplementary,../3.35/Bayesian-Psi-NN-v3_35-supplementary-evidence,supplementary ablations and runtime scripts,legacy_diagnostic,index_only,Representative and mixed-protocol outputs must not enter official paper tables.
+v3_37_main_blind,../3.37/Bayesian-Psi-NN-v3_37-blind-split-baselines,main blind split and five-seed GBSD source,primary_migration_source,migrated_to_runtime_engine,Retained only as historical provenance after runtime integration.
+v3_38_full_baselines,../3.38/Bayesian-Psi-NN-v3_38-full-baselines,strong baseline prototype source,primary_migration_source,migrated_to_runtime_engine,Runtime source was migrated without generated outputs and official baselines must be re-run.
+runnable_gbsd,../Bayesian-nn/code/Runnable-GBSD-Experiments,previous runnable package,secondary_migration_source,compare_and_migrate,Useful for runnable command structure and README organization.
+archived_results,../Bayesian-nn/result,curated old result archive,legacy_diagnostic,index_only,Use only for provenance unless regenerated under official protocol.
+paper_tools_old,../tools,paper rendering and audit scripts,secondary_migration_source,migrate_selected_tools,Only tools that read official summaries should be retained for submission workflow.
+paper_versions,../Paper,manuscript and figure usage sources,documentation_source,index_only,Use for checking paper asset references; not a result source.
