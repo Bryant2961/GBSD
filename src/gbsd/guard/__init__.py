@@ -1,0 +1,2 @@
+"""Guarded source-selection utilities."""
+
