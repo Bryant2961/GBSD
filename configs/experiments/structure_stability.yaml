@@ -1,0 +1,16 @@
+experiment: structure_stability
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+checks:
+  - across_seed_main_hac_outcome_stability
+implemented_outputs:
+  - structured_rL2
+  - compression_ratio
+  - guard_decision
+not_yet_official:
+  - same_seed_multiple_discovery_runs
+  - selected_term_frequency
+  - library_size_sensitivity
+note: "The current model exposes weight-cluster outcomes, not a symbolic term library; unsupported stability claims are excluded."
+outputs:
+  summary: summary_structure_stability.csv

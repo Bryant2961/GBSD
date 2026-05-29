@@ -1,0 +1,9 @@
+baseline: structure_discovery_baselines
+protocol_id: unified_blind_protocol_v1
+must_match_main_split: true
+variants:
+  - random_clustering
+  - magnitude_clustering
+  - low_rank
+  - identity_no_compression
+

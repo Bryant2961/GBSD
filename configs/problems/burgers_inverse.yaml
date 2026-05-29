@@ -1,0 +1,10 @@
+problem: burgers_inverse
+display_name: Burgers inverse
+type: inverse_pde
+has_inverse_parameter: true
+official_metrics:
+  inverse_parameter_fields:
+    - nu_true
+    - nu_pred
+    - nu_rel_error
+

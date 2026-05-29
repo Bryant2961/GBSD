@@ -1,0 +1,19 @@
+experiment: strong_baselines
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+problems: [laplace, poisson, burgers_inverse]
+must_rerun: true
+legacy_results_allowed: false
+baselines:
+  - direct_mc_dropout_pinn
+  - deep_ensemble_pinn
+  - non_guarded_structured
+  - structure_discovery_baselines
+  - always_dense
+  - always_structured
+split_policy:
+  use_same_train_guard_blind_as_main: true
+  unused_guard_set_must_be_declared: true
+outputs:
+  summary: summary_baselines.csv
+

@@ -1,0 +1,31 @@
+project:
+  name: gbsd_jcp_reproducibility
+  protocol_id: unified_blind_protocol_v1
+  official_seed_list: [0, 1, 2, 3, 4]
+  forbid_internal_version_labels: true
+paths:
+  official_results: results/unified_blind_protocol
+  paper_tables: results/paper_tables
+  paper_figures: results/paper_figures
+  audit: results/audit
+splits:
+  train_split: train
+  guard_split: guard_validation
+  blind_split: blind_test
+  guard_may_read_blind_labels: false
+metrics:
+  required:
+    - dense_rL2
+    - structured_rL2
+    - final_rL2
+    - coverage95
+    - nll
+    - aiw
+    - error_std_corr
+    - compression_ratio
+    - final_source
+    - guard_decision
+    - teacher_training_time_s
+    - student_training_time_s
+    - structured_training_time_s
+

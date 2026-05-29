@@ -1,0 +1,18 @@
+experiment: reconstruction_ablation
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+problems: [laplace, poisson, burgers_inverse]
+variants:
+  - full_structured_reconstruction
+  - without_pde_residual_loss
+  - without_boundary_or_initial_loss
+  - without_distillation_loss
+  - without_hard_boundary_condition
+implemented_scope:
+  without_hard_boundary_condition: [poisson]
+not_yet_official:
+  - without_sparsity_or_structure_constraint
+  - dense_student_only_reconstruction
+note: "not_yet_official variants require new model-level execution logic and are not emitted as paper evidence."
+outputs:
+  summary: summary_reconstruction_ablation.csv

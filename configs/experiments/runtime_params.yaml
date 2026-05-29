@@ -1,0 +1,19 @@
+experiment: runtime_params
+protocol_id: unified_blind_protocol_v1
+requires:
+  - teacher_params
+  - dense_student_params
+  - structured_trainable_params
+  - structured_effective_params
+  - compression_ratio
+  - teacher_training_time_s
+  - student_training_time_s
+  - structured_training_time_s
+  - total_wall_clock_time_s
+  - device_name
+  - cuda_version
+  - pytorch_version
+  - ram_gb
+outputs:
+  summary: summary_runtime_params.csv
+

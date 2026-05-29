@@ -1,0 +1,18 @@
+experiment: threshold_sensitivity
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+sweeps:
+  - accuracy_tolerance
+  - minimum_compression_ratio
+  - clustering_threshold
+implemented_as_postprocess:
+  - accuracy_tolerance
+  - minimum_compression_ratio
+implemented_as_retraining:
+  - clustering_threshold
+not_yet_official:
+  - calibration_temperature_range
+  - disagreement_weight
+  - structure_library_threshold
+outputs:
+  summary: summary_threshold_sensitivity.csv

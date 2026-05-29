@@ -1,0 +1,14 @@
+experiment: uq_calibration_ablation
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+problems: [poisson, burgers_inverse]
+optional_problems: [laplace]
+variants:
+  - raw_mc_dropout
+  - temperature_only
+  - disagreement_only
+  - temperature_plus_disagreement
+  - full_calibration
+outputs:
+  summary: summary_uq_ablation.csv
+

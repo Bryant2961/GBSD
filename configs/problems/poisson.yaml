@@ -1,0 +1,7 @@
+problem: poisson
+display_name: Poisson
+type: forward_pde
+has_inverse_parameter: false
+official_metrics:
+  inverse_parameter_fields: null
+

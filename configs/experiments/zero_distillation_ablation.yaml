@@ -1,0 +1,11 @@
+experiment: zero_distillation_ablation
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+variants:
+  - teacher_distilled_student
+  - zero_distillation_mc_dropout_student
+related_strong_baseline:
+  - direct_mc_dropout_pinn
+note: "Direct MC Dropout PINN is generated once under strong_baselines rather than duplicated in this ablation table."
+outputs:
+  summary: summary_zero_distillation_ablation.csv

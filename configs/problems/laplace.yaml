@@ -1,0 +1,7 @@
+problem: laplace
+display_name: Laplace
+type: forward_pde
+has_inverse_parameter: false
+official_metrics:
+  inverse_parameter_fields: null
+

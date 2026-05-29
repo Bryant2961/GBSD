@@ -1,0 +1,15 @@
+experiment: guard_ablation
+protocol_id: unified_blind_protocol_v1
+seeds: [0, 1, 2, 3, 4]
+variants:
+  - full_gbsd
+  - always_dense
+  - always_structured
+  - accuracy_only_guard
+  - compression_only_guard
+  - no_guard_random_source
+diagnostic_only_variants:
+  - validation_oracle_guard
+outputs:
+  summary: summary_guard_ablation.csv
+
