@@ -1,0 +1,75 @@
+key,value,note
+node_num,32,Number of nodes per hidden layer
+coord_num,2,Input dimensions (x and y)
+output_num,1,Output dimensions
+learning_rate,0.001,Learning rate
+train_steps,10000,Training iterations for teacher
+student_train_steps,10000,Training iterations for student (same as teacher for fair comparison)
+train_ratio,1.0,Deprecated — use student_train_steps instead
+dropout_rate,0.02,MC Dropout probability for calibrated inference
+x_min,-1.0,Domain x minimum
+x_max,1.0,Domain x maximum
+y_min,-1.0,Domain y minimum
+y_max,1.0,Domain y maximum
+grid_node_num,50,Grid resolution
+bun_node_num,100,Boundary nodes
+figure_node_num,100,Figure resolution
+regularization_state,1,Enable regularization
+pace_record_state,0,Record intermediate states
+hidden_layers_group,"1,1,1",Hidden layer configuration
+model,PINN PINN_post_plus,Baseline comparison models
+milestone,"5000,10000",Learning rate decay milestones
+gamma,0.5,Learning rate decay factor
+pace_record_gap,1000,Recording interval
+pace_record_skip,"0,5000",Skip recording steps
+distill_noise,0.0,Noise added to teacher outputs during distillation
+train_dropout_rate,0.005,Very low dropout during distillation training to improve deterministic mean accuracy
+cluster_mode,relative,Scale clustering threshold by layer weight magnitude
+max_structure_compression,1.20,Tighter guardrail so structured Laplace remains close to dense mean
+cluster_refine_attempts,14,Maximum automatic tightening attempts for structure discovery
+student_pde_weight,0.5,PDE residual in student training (improves boundary/corner accuracy)
+lambda_pde_teacher,1.0,Teacher PDE residual weight
+lambda_bc_teacher,20.0,Teacher nonzero Dirichlet boundary weight
+lambda_pde_student,1.0,Student PDE residual weight
+lambda_bc_student,20.0,Student nonzero Dirichlet boundary weight
+lambda_data_student,0.0,Laplace has no sparse data supervision
+lambda_distill_student,10.0,Student teacher-distillation weight
+mean_refine_steps,4000,Deterministic Bayesian mean-refinement Adam steps
+mean_refine_lr,0.0005,Learning rate for deterministic Bayesian mean refinement
+mean_refine_lbfgs_steps,200,L-BFGS cleanup for Laplace mean refinement
+mean_refine_lbfgs_lr,1.0,L-BFGS learning rate for mean refinement
+lambda_pde_mean_refine,1.0,Mean-refinement PDE residual weight
+lambda_bc_mean_refine,30.0,Mean-refinement boundary weight
+lambda_data_mean_refine,0.0,Laplace has no data anchors in mean refinement
+lambda_distill_mean_refine,15.0,Mean-refinement teacher-distillation weight
+lambda_reg_mean_refine,0.0,No extra regularization during deterministic mean cleanup
+lambda_pde_recon,2.0,Structured reconstruction PDE residual weight
+lambda_bc_recon,30.0,Structured reconstruction boundary weight
+lambda_data_recon,20.0,Structured reconstruction exact-solution anchor weight
+lambda_distill_recon,10.0,Structured reconstruction dense-student distillation weight
+lambda_anchor_recon,25.0,Structured reconstruction dense-student anchor weight
+recon_distill_target,student,Use the refined dense student as the reconstruction distillation target
+recon_best_metric,anchor,Restore structured checkpoint that best matches the refined dense student
+recon_validation_n,80,Validation grid size used only for structured checkpoint selection
+anchor_pretrain_steps,3000,Pretrain all structured parameters against refined dense student before physics reconstruction
+anchor_pretrain_lr,0.0005,Learning rate for structured anchor warm start
+anchor_pretrain_pde_weight,0.0,Keep anchor warm start cheap; PDE terms are applied in reconstruction
+structured_residual_branch,1,Enable a tiny residual branch for Laplace after 3.28 showed pure compact core underfits
+structured_residual_alpha,0.03,Very small residual correction strength; structure should remain the main model
+structured_residual_width,8,Restore the 3.29 tiny residual width while keeping stronger residual regularization
+residual_pretrain_steps,300,Short residual warm start after structured-core anchor pretraining
+residual_pretrain_lr,0.0005,Residual warm-start learning rate
+lambda_residual_output,0.3,Stronger residual-output penalty to keep the compact core dominant
+lambda_alpha_recon,0.0015,Stronger residual-alpha regularization to avoid a dense bypass
+recon_train_dropout_rate,0.005,Low dropout while fitting structured model; full dropout restored for MC inference
+min_structured_compression,1.10,Accept structured prediction only if it remains smaller than the dense model
+accept_structured_rel_l2_ratio,1.50,Use structured prediction only if it stays close to dense Bayesian accuracy
+accept_structured_rel_l2_abs,0.00005,Small absolute tolerance for structured prediction guard
+calibrate_std_temperature,True,Apply scalar post-hoc std temperature calibration
+std_calibration_target_coverage,0.95,Target empirical coverage for calibrated uncertainty
+std_calibration_stride,3,Use deterministic checkerboard subset for forward-problem std calibration
+std_temperature_min,0.0001,Minimum std temperature factor
+std_temperature_max,1.0,Maximum std temperature factor
+use_lbfgs,1,Use L-BFGS refinement for Laplace teacher/student/reconstruction
+lbfgs_steps,100,L-BFGS refinement steps
+lbfgs_lr,1.0,L-BFGS learning rate

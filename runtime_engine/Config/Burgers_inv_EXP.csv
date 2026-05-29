@@ -1,0 +1,95 @@
+key,value,note
+node_num,48,Number of nodes per hidden layer (larger student capacity for shock-like transition)
+coord_num,2,Input dimensions (x and t)
+output_num,1,Output dimensions
+learning_rate,0.001,Learning rate
+train_steps,20000,Training iterations for teacher
+student_train_steps,20000,Training iterations for student (same as teacher for fair comparison)
+train_ratio,1.0,Deprecated — use student_train_steps instead
+x_min,-1.0,Domain x minimum
+x_max,1.0,Domain x maximum
+y_min,0.0,Domain t minimum (time)
+y_max,1.0,Domain t maximum (time)
+grid_node_num,80,Grid resolution for PDE collocation
+bun_node_num,100,Boundary nodes
+figure_node_num,100,Figure resolution
+regularization_state,1,Enable regularization
+pace_record_state,0,Record intermediate states
+hidden_layers_group,"1,1,1",Hidden layer configuration
+model,PINN PINN_post_minus,Baseline comparison models
+data_serial,"1,3",Data files used as supervision (inverse problem)
+para_ctrl,0.003183,Control parameter (nu = 0.01/pi)
+para_ctrl_add,0,Add parameters as input
+dropout_rate,0.05,MC Dropout probability before post-hoc std temperature calibration
+milestone,"10000,16000",Learning rate decay milestones
+gamma,0.5,Learning rate decay factor
+pace_record_gap,2000,Recording interval
+pace_record_skip,"0,10000",Skip recording steps
+data_weight,5.0,Weight multiplier for supervised data loss (standard reference sparse data)
+nu_prior_weight,1.0,Prior regularization weight for ν toward initial value
+burgers_nu_refine_steps,0,Post-teacher viscosity-only refinement disabled by default because teacher already estimates nu accurately
+burgers_nu_refine_lr,0.0005,Learning rate for viscosity-only refinement
+burgers_nu_refine_prior_weight,1.0,Prior weight used during viscosity-only refinement
+distill_noise,0.001,Small teacher-output noise during distillation
+train_dropout_rate,0.003,Very low dropout during distillation training (full rate used for MC inference)
+teacher_use_boundary_in_inverse,1,Use Burgers IC/BC loss during inverse teacher training
+lambda_pde_teacher,1.0,Teacher PDE residual weight
+lambda_bc_teacher,1.0,Teacher boundary/initial-condition weight
+lambda_data_teacher,5.0,Teacher sparse observation data weight
+student_use_direct_data,1,Use sparse observations directly in student training
+student_pde_weight,0.2,Backward-compatible student PDE residual weight
+lambda_pde_student,1.5,Student PDE residual weight
+lambda_bc_student,1.5,Student boundary/initial-condition weight
+lambda_data_student,5.0,Student sparse observation data weight
+lambda_distill_student,10.0,Student teacher-distillation weight
+mean_refine_steps,5000,Deterministic Bayesian mean-refinement Adam steps
+mean_refine_lr,0.0003,Learning rate for deterministic Burgers mean refinement
+mean_refine_lbfgs_steps,0,Skip L-BFGS for nonlinear Burgers inverse refinement
+lambda_pde_mean_refine,1.5,Mean-refinement PDE residual weight
+lambda_bc_mean_refine,2.0,Mean-refinement boundary/initial-condition weight
+lambda_data_mean_refine,8.0,Mean-refinement sparse data weight
+lambda_distill_mean_refine,8.0,Mean-refinement teacher-distillation weight
+lambda_reg_mean_refine,0.0,No extra regularization during deterministic mean cleanup
+burgers_ic_sign,-1.0,Use mainstream PINN benchmark IC u0=-sin(pi*x)
+burgers_ic_weight_teacher,5.0,Initial-condition multiplier inside teacher BC loss
+burgers_ic_weight_student,5.0,Initial-condition multiplier inside student BC loss
+burgers_ic_weight_recon,3.0,Initial-condition multiplier inside structured reconstruction BC loss
+cluster_mode,relative,Scale clustering threshold by layer weight magnitude
+max_structure_compression,1.25,Guardrail: keep Burgers structure close to dense shock dynamics
+cluster_refine_attempts,8,Maximum automatic tightening attempts for structure discovery
+burgers_shock_sampling,1,Add extra collocation points near the central shock/transition band
+burgers_shock_points,2500,Number of extra shock-band collocation points
+burgers_shock_x_width,0.12,Gaussian width for shock-band x samples around zero
+burgers_shock_t_min,0.0,Minimum time for shock-band samples
+recon_train_dropout_rate,0.003,Low dropout while fitting structured model; full dropout restored for MC inference
+lambda_pde_recon,2.5,Structured reconstruction PDE residual weight
+lambda_bc_recon,3.0,Structured reconstruction boundary/initial-condition weight
+lambda_data_recon,10.0,Structured reconstruction sparse-observation anchor weight
+lambda_distill_recon,30.0,Structured reconstruction student-distillation weight
+lambda_anchor_recon,30.0,Structured reconstruction dense-student anchor weight
+recon_distill_target,student,Distill structured reconstruction against refined dense student
+recon_best_metric,anchor,Restore structured checkpoint that best matches the refined dense student
+recon_validation_n,80,Validation grid size used only for structured checkpoint selection
+structured_residual_branch,1,Add residual correction branch to protect against over-restrictive structure
+structured_residual_alpha,0.15,Small residual correction strength; structure should remain the main model
+structured_residual_width,64,Small residual correction hidden width to preserve compression
+anchor_pretrain_steps,3000,Pretrain all structured parameters against refined dense student before nonlinear reconstruction
+anchor_pretrain_lr,0.0003,Learning rate for structured anchor warm start
+anchor_pretrain_pde_weight,0.0,Keep anchor warm start cheap; PDE/data terms are applied in reconstruction
+residual_pretrain_steps,1000,Short residual warm start after structured-core anchor pretraining
+residual_pretrain_lr,0.0003,Residual warm-start learning rate
+lambda_residual_output,0.02,Lightly penalize residual branch output so compression is meaningful
+lambda_alpha_recon,0.0001,Lightly regularize residual alpha during reconstruction
+cluster_distance,0.015,More conservative Burgers clustering for shock-like fields
+min_structured_compression,1.10,Accept structured prediction only if it remains smaller than the dense model
+accept_structured_rel_l2_ratio,1.03,Use structured prediction only if it is within 3% of dense Bayesian accuracy
+accept_structured_rel_l2_abs,0.0001,Small absolute slack for Burgers structured prediction guard
+use_lbfgs,0,Skip L-BFGS for nonlinear Burgers inverse by default
+lbfgs_steps,100,L-BFGS steps if enabled
+heldout_data_serial,2,Held-out Burgers data file used for posterior evaluation
+reference_file,Burgers_inv_reference.npz,High-resolution standard Burgers reference solution
+calibrate_std_temperature,True,Apply scalar post-hoc std temperature calibration
+std_calibration_target_coverage,0.95,Target empirical coverage for calibrated uncertainty
+std_calibration_use_heldout,True,Use held-out Burgers observations for std calibration
+std_temperature_min,0.001,Minimum std temperature factor
+std_temperature_max,1.0,Maximum std temperature factor

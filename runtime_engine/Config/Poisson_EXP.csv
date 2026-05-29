@@ -1,0 +1,95 @@
+key,value,note
+node_num,48,Number of nodes per hidden layer (increased from 32 for 4-mode Fourier resolution)
+coord_num,2,Input dimensions
+output_num,1,Output dimensions
+learning_rate,0.001,Learning rate
+train_steps,30000,Training iterations for teacher
+student_train_steps,30000,Training iterations for student (same as teacher for fair comparison)
+train_ratio,1.0,Deprecated — use student_train_steps instead
+dropout_rate,0.20,MC Dropout probability for MC inference; 0.20 keeps uncertainty useful without over-widening intervals
+x_min,0.0,Domain x minimum
+x_max,1.0,Domain x maximum
+y_min,0.0,Domain y minimum
+y_max,1.0,Domain y maximum
+grid_node_num,100,Grid resolution for PDE collocation (increased from 50 for better mode capture)
+bun_node_num,100,Boundary nodes
+figure_node_num,100,Figure resolution
+regularization_state,1,Enable regularization
+pace_record_state,0,Record intermediate states
+hidden_layers_group,"1,1,1",Hidden layer configuration
+model,PINN PINN_post_poisson,Baseline comparison models
+milestone,"15000,24000",Learning rate decay milestones
+gamma,0.2,Learning rate decay factor
+pace_record_gap,3000,Recording interval
+pace_record_skip,"0,15000,24000",Skip recording steps
+distill_noise,0.001,Noise added to teacher outputs (reduced: 0.01 was 14.3% of signal destroying higher modes)
+train_dropout_rate,0.005,Very low dropout during distillation training so the Poisson mean does not inherit stochastic mask bias
+cluster_mode,relative,Scale clustering threshold by layer weight magnitude
+cluster_distance,0.08,Initial clustering threshold; auto-tightened if compression is too high
+max_structure_compression,1.25,Guardrail: keep enough clusters while retaining real compression
+cluster_refine_attempts,14,Maximum automatic tightening attempts for structure discovery
+student_pde_weight,0.1,Weight for PDE residual in student training (physics-informed distillation)
+use_hard_bc,True,Use hard zero Dirichlet envelope for Poisson boundary
+use_fourier_features,True,Use Fourier positional features for Poisson inputs
+fourier_modes,4,Fourier feature modes k=1..4
+lambda_pde_teacher,1.0,Poisson teacher PDE residual weight
+lambda_bc_teacher,1.0,Poisson teacher BC monitoring weight when hard BC is active
+lambda_data_teacher,1.0,Poisson teacher exact-solution supervision weight
+lambda_reg_teacher,1e-5,Poisson teacher L2 regularization weight
+lambda_pde_student,1.0,Poisson student PDE residual weight
+lambda_bc_student,1.0,Poisson student BC monitoring weight when hard BC is active
+lambda_data_student,20.0,Poisson student exact-solution supervision weight
+lambda_distill_student,20.0,Poisson student teacher-distillation weight
+lambda_reg_student,1e-5,Poisson Bayesian KL/L2 regularization weight
+kl_warmup_epochs,2000,KL annealing warmup for VI-BNN students
+adaptive_sampling,True,Enable residual-based adaptive refinement for Poisson
+adaptive_n_f,5000,Poisson interior collocation points
+adaptive_n_candidate,20000,Poisson adaptive candidate points
+adaptive_every,1000,Poisson adaptive update interval
+adaptive_top_frac,0.20,Fraction of candidate residuals considered hard points
+adaptive_uniform_frac,0.70,Fraction of retained uniform interior points
+use_lbfgs,True,Run L-BFGS refinement after Adam for Poisson teacher/student/reconstruction
+lbfgs_steps,300,Poisson L-BFGS refinement steps
+lbfgs_lr,1.0,Poisson L-BFGS learning rate
+poisson_mean_refine_steps,7000,Extra deterministic mean-refinement steps for Bayesian Poisson student
+poisson_mean_refine_lr,0.0005,Learning rate for deterministic Bayesian mean refinement
+poisson_mean_refine_lbfgs_steps,500,L-BFGS cleanup steps for deterministic Bayesian mean refinement
+poisson_refine_grid_n,100,Dense exact-anchor grid used only during mean refinement
+lambda_pde_mean_refine,1.0,Mean-refinement PDE residual weight
+lambda_bc_mean_refine,1.0,Mean-refinement boundary monitoring weight
+lambda_data_mean_refine,80.0,Mean-refinement exact-solution anchor weight
+lambda_distill_mean_refine,20.0,Mean-refinement teacher-distillation weight
+lambda_reg_mean_refine,0.0,No extra regularization during deterministic mean cleanup
+structured_residual_branch,True,Add residual correction branch to the structured candidate
+structured_residual_alpha,0.05,Small residual branch scale; structure should remain the main model
+structured_residual_width,32,Small residual branch hidden width to preserve compression
+anchor_pretrain_steps,0,Restore 3.29 structured-core anchor pretraining for mean accuracy
+anchor_pretrain_lr,0.0005,Learning rate for structured anchor warm start
+anchor_pretrain_pde_weight,0.0,Keep anchor warm start cheap; PDE terms are applied in reconstruction
+residual_pretrain_steps,500,Short residual warm start after structured-core anchor pretraining
+residual_pretrain_lr,0.0005,Residual warm-start learning rate
+lambda_residual_output,0.05,Lightly penalize residual branch output so the compact core remains dominant
+lambda_alpha_recon,0.0001,Lightly regularize residual alpha during reconstruction
+recon_train_dropout_rate,0.005,Low dropout while fitting structured model; full dropout restored for MC inference
+lambda_pde_recon,6.0,Moderate structured reconstruction PDE weight to reduce drift from dense-student anchor
+lambda_bc_recon,1.0,Structured reconstruction BC weight
+lambda_data_recon,50.0,Structured reconstruction exact-solution anchor weight
+lambda_distill_recon,20.0,Structured reconstruction teacher/student-distillation weight
+lambda_anchor_recon,0,Restore 3.29 dense-student anchor strength for structured fidelity
+recon_distill_target,student,Use the refined Bayesian dense student as the reconstruction distillation target
+recon_best_metric,anchor,Restore structured checkpoint that best matches the refined dense student
+recon_validation_n,80,Validation grid size used only for structured checkpoint selection
+min_structured_compression,1.10,Accept structured prediction only if it remains smaller than the dense model
+accept_structured_rel_l2_ratio,1.25,Use structured prediction only if it stays close to dense Bayesian accuracy
+accept_structured_rel_l2_abs,0.00005,Small absolute tolerance for structured prediction guard
+calibrate_std_from_structure,True,Replace selected predictive std with dense-vs-structured disagreement calibration for Poisson
+structure_std_scale,0.7,Reduced dense/structured disagreement scale to restore error-std localization
+structure_std_power,2.25,Sharpen dense/structured disagreement feature for Poisson UQ correlation
+std_residual_component,False,Disable negatively correlated PDE residual std component for Poisson
+residual_std_scale,1.0,Scale for PDE residual uncertainty component before feature calibration
+std_feature_calibration,True,Fit nonnegative std feature weights on a checkerboard calibration split
+calibrate_std_temperature,True,Apply scalar temperature calibration after feature-mixed std
+std_calibration_stride,10,Sparser split for Poisson std calibration and held-out UQ evaluation
+std_calibration_offset,4,Offset for sparse Poisson std calibration split
+raw_std_blend,0.04,More raw MC component retained to improve Poisson error-std correlation
+std_floor,1e-7,Minimum numerical std used by calibrated uncertainty
