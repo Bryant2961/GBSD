@@ -220,3 +220,9 @@ as TODO placeholders until the public release or Zenodo archive is finalized.
 Please use the GitHub issue tracker for reproducibility questions. If the
 repository is released non-anonymously, update this section with the maintainer
 contact before publication.
+
+## Archived release
+
+The archived release of this repository is available on Zenodo:
+
+DOI: 10.5281/zenodo.20443030
